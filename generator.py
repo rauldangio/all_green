@@ -13,18 +13,24 @@ def get_date():
     return date
 
 
-def make_commit(date):
-    while start <= 45000:
-        print(date)
-        os.system(f"echo {date} > file.txt")
-        os.system("git add file.txt")
-        os.system(f"git commit -m 'commit' --date={date} -q")
+def make_commit():
+    date = get_date()
+    print(date)
+    os.system(f"echo {date} > file.txt")
+    os.system("git add file.txt")
+    os.system(f"git commit -m 'commit' --date={date} -q")
     
 
+def push_commit(start,end):
+    while start < end:
+        make_commit()
+        start+=1
+        os.system("git push origin master -q")
+
+
 def main():
-    date = get_date()
-    make_commit(date)
-    os.system('git push origin master')
+    push_commit(start,end)
+
 
 
 if __name__ == '__main__':
