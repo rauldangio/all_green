@@ -15,9 +15,10 @@ def get_date():
 
 def make_commit(date):
     while start <= 45000:
+        print(date)
         os.system(f"echo {date} > file.txt")
         os.system("git add file.txt")
-        os.system(f"git commit -m 'commit' --date={date}")
+        os.system(f"git commit -m 'commit' --date={date} -q")
     
 
 def main():
